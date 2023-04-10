@@ -1,6 +1,4 @@
 from turtle import Turtle
-from food import Food
-import random
 
 MOVE_DISTANCE = 20
 UP = 90
@@ -35,6 +33,13 @@ class Snake():
             self.segments[i].goto(self.segments[i-1].xcor(),
                                   self.segments[i-1].ycor())
         self.head.forward(MOVE_DISTANCE)
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(2000, 2000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     def up(self):
         if self.head.heading() != DOWN:
